@@ -5,3 +5,4 @@ ros2 launch urdf_tutorial display.launch.py model:=/home/shaurya/manipulator_ws/
 
 Use launch file display.launch.py to view the urdf in rviz2
 ros2 launch description display.launch.py
+

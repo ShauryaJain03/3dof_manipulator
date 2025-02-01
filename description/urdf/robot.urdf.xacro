@@ -18,7 +18,12 @@
     <link name="world"/>
 
     <link name="base_link">
-        <xacro:default_inertial mass="1.0"/>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+    
         <visual>
             <origin xyz="-0.5 -0.5 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
@@ -128,6 +133,28 @@
             </geometry>
         </collision>
     </link>
+
+    <link name="rgb_camera">        
+        <xacro:default_inertial mass="0.01"/>
+        <visual>
+            <origin rpy="-1.57 0 -1.57" xyz="-0.1 0.125 0.15"/>            
+            <geometry>
+                <mesh filename="package://description/meshes/pi_camera.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="-1.57 0 -1.57" xyz="-0.1 0.125 0.15"/>
+            <geometry>
+                <mesh filename="package://description/meshes/pi_camera.STL" scale="0.01 0.01 0.01"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="rgb_camera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="rgb_camera"/>
+        <origin xyz="0 0.45 0.2" rpy="0 -0.5 1.57"/>
+    </joint>
 
     <joint name="virtual_joint" type="fixed">
         <parent link="world"/>
