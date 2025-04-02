@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mani">
 
+    <xacro:arg name="is_ignition" default="true"/>
+
+    <xacro:include filename="$(find description)/urdf/robot_gazebo.xacro"/>
+    <xacro:include filename="$(find description)/urdf/robot_ros2_control.xacro"/>
+
     <xacro:property name="PI" value="3.14159"/>
     <xacro:property name="effort" value="30.0"/>
     <xacro:property name="velocity" value="10.0"/>
