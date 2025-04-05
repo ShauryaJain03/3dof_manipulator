@@ -17,3 +17,6 @@ ros2 topic pub /gripper_controller/commands std_msgs/msg/Float64MultiArray "layo
   dim: []
   data_offset: 0
 data: [-1]"
+
+launch moveit -
+ros2 launch moveit moveit.launch.py

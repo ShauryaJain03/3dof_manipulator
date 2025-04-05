@@ -5,15 +5,26 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+
+
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
+find_package(rclcpp_components REQUIRED)
+find_package(moveit_ros_planning_interface REQUIRED)
+find_package(rclcpp_lifecycle REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+
+add_executable(moveit_interface src/moveit_interface.cpp)
+ament_target_dependencies(moveit_interface rclcpp moveit_ros_planning_interface)
 
 install(
   DIRECTORY config launch
   DESTINATION share/${PROJECT_NAME}
+)
+
+install(TARGETS
+  moveit_interface
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)
